@@ -25,7 +25,7 @@ public class ProductService : IProductService
     {
         var spec = new ProductWithBrandAndCategorySpecifications(productId);
 
-        var product = await _unitOfWork.Repository<Product>().GetByIdWithSpecAsync(spec);
+        var product = await _unitOfWork.Repository<Product>().GetEntityWithSpecAsync(spec);
 
         return product;
     }

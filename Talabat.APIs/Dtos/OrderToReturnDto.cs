@@ -22,5 +22,5 @@ public class OrderToReturnDto
 
     public decimal Total { get; set; }  //Will be gotten from the entity method GetTotal by convention
 
-    public string PaymentIntentId { get; set; } = string.Empty;
+    public string PaymentIntentId { get; set; } 
 }

@@ -9,13 +9,16 @@ namespace Talabat.Service;
 public class OrderService : IOrderService
 {
     private readonly IBasketRepository _basketRepository;
+    private readonly IPaymentService _paymentService;
     private readonly IUnitOfWork _unitOfWork;
 
     public OrderService(
         IBasketRepository basketRepository,
+        IPaymentService paymentService,
         IUnitOfWork unitOfWork)
     {
         _basketRepository = basketRepository;
+        _paymentService = paymentService;
         _unitOfWork = unitOfWork;
     }
     public async Task<Order?> CreateOrderAsync(string buyerEmail, string basketId, int deliveryMethodId, Address shippingAddress)
@@ -47,10 +50,23 @@ public class OrderService : IOrderService
         //4. Get DeliveryMethod From DeliveryMethod Repository
         var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
-        //5. Create Order 
-        var order = new Order(buyerEmail, shippingAddress, deliveryMethod, orderItems, subTotal);
+        var ordersRepo= _unitOfWork.Repository<Order>();
 
-        await _unitOfWork.Repository<Order>().AddAsync(order);
+        var orderSpecs = new OrderWithPaymentIntentSpecifications(basket.PaymentIntentId);
+
+        var existingOrder = await ordersRepo.GetEntityWithSpecAsync(orderSpecs);
+
+        if(existingOrder is not null)
+        {
+            ordersRepo.Delete(existingOrder);
+
+            await _paymentService.CreateOrUpdatePaymentIntent(basketId);
+        }
+
+        //5. Create Order 
+        var order = new Order(buyerEmail, shippingAddress, deliveryMethod, orderItems, subTotal,basket.PaymentIntentId);
+
+        await ordersRepo.AddAsync(order);
 
         //6. Save to Database
         var result=await _unitOfWork.CompleteAsync();
@@ -76,7 +92,7 @@ public class OrderService : IOrderService
 
         var spec = new OrderSpecifications(orderId,buyerEmail);
 
-        var order = orderRepo.GetByIdWithSpecAsync(spec);
+        var order = orderRepo.GetEntityWithSpecAsync(spec);
 
         return order;
     }

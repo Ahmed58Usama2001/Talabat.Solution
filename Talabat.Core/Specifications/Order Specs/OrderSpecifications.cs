@@ -1,4 +1,6 @@
-﻿using Talabat.Core.Entities.Order_Aggregate;
+﻿using StackExchange.Redis;
+using Talabat.Core.Entities.Order_Aggregate;
+using Order = Talabat.Core.Entities.Order_Aggregate.Order;
 
 namespace Talabat.Core.Specifications.Order_Specs;
 
@@ -21,4 +23,5 @@ public class OrderSpecifications:BaseSpecifications<Order>
 
         AddOrderByDesc(O => O.OrderDate);
     }
+
 }

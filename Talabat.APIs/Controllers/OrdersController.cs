@@ -34,7 +34,7 @@ public class OrdersController : BaseApiController
     {
         var buyerEmail = User.FindFirstValue(ClaimTypes.Email);
 
-        var address = _mapper.Map<AddressDto, Address>(orderDto.ShippingAddress);
+        var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
 
         var order=await _orderService.CreateOrderAsync(buyerEmail, orderDto.BasketId, orderDto.DeliveryMethodId, address);
 
