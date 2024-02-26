@@ -47,7 +47,7 @@ namespace Talabat.APIs
             {
                 options.AddPolicy("MyPolicy", options =>
                 {
-                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
 
