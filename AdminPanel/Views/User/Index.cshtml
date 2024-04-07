@@ -1,0 +1,53 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Users</h1>
+
+<hr />
+
+@if (Model.Count() > 0)
+{
+    <div class="container">
+        <table class=" table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(r => r.UserName)</th>
+                    <th>@Html.DisplayNameFor(r => r.DisplayName)</th>
+                    <th>@Html.DisplayNameFor(r => r.Email)</th>
+                    <th>@Html.DisplayNameFor(r => r.PhoneNumber)</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>@item.DisplayName</td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@string.Join(",",item.Roles.ToList())</td>
+                        <td>
+                            <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pen me-1"></i>Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class=" alert-warning mt-3 p-3">
+        <h2>There is no records</h2>
+    </div>
+}
+
+
+                          @section Scripts{
+                              <partial name="_ValidationScriptsPartial"></partial>
+                          }

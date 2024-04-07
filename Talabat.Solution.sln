@@ -5,11 +5,13 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Talabat.APIs", "Talabat.APIs\Talabat.APIs.csproj", "{BE8DB542-B25F-4D70-87C1-9B030BDBBC4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talabat.Core", "Talabat.Core\Talabat.Core.csproj", "{AF2F6F80-3579-491E-93A9-FE59F81ED787}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Talabat.Core", "Talabat.Core\Talabat.Core.csproj", "{AF2F6F80-3579-491E-93A9-FE59F81ED787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talabat.Repository", "Talabat.Repository\Talabat.Repository.csproj", "{180D53C5-A49F-48F0-B7FA-B0D1C4285258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Talabat.Repository", "Talabat.Repository\Talabat.Repository.csproj", "{180D53C5-A49F-48F0-B7FA-B0D1C4285258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talabat.Service", "Talabat.Service\Talabat.Service.csproj", "{C2D1B0DB-6A5E-440E-8FAC-4464E7DE12B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Talabat.Service", "Talabat.Service\Talabat.Service.csproj", "{C2D1B0DB-6A5E-440E-8FAC-4464E7DE12B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPanel", "AdminPanel\AdminPanel.csproj", "{E0436D91-4417-4B8D-A0DF-E6C825E06731}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C2D1B0DB-6A5E-440E-8FAC-4464E7DE12B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D1B0DB-6A5E-440E-8FAC-4464E7DE12B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2D1B0DB-6A5E-440E-8FAC-4464E7DE12B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0436D91-4417-4B8D-A0DF-E6C825E06731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0436D91-4417-4B8D-A0DF-E6C825E06731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0436D91-4417-4B8D-A0DF-E6C825E06731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0436D91-4417-4B8D-A0DF-E6C825E06731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
