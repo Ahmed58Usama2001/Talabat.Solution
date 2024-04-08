@@ -6,6 +6,14 @@ namespace Talabat.Core.Specifications.Order_Specs;
 
 public class OrderSpecifications:BaseSpecifications<Order>
 {
+    public OrderSpecifications()
+    {
+        Includes.Add(O => O.Items);
+        Includes.Add(O => O.DeliveryMethod);
+        Includes.Add(O => O.ShippingAddress);
+        AddOrderByDesc(O => O.OrderDate);
+    }
+
     public OrderSpecifications( string buyerEmail)
         :base(O=>O.BuyerEmail== buyerEmail)
     {

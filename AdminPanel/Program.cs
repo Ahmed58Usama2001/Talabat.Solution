@@ -1,7 +1,10 @@
+using AdminDashboard.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using Talabat.Core.Entities.Identity;
+using Talabat.Core.Repositories.Contract;
+using Talabat.Repository;
 using Talabat.Repository.Data;
 using Talabat.Repository.Identity;
 
@@ -33,6 +36,10 @@ namespace AdminPanel
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
             }).AddEntityFrameworkStores<AppIdentityDbContext>();
+
+            builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+            builder.Services.AddAutoMapper(typeof(MapsProfile));
 
             var app = builder.Build();
 

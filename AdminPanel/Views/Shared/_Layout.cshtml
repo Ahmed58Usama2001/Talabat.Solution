@@ -46,12 +46,26 @@
                         <a class="nav-link"  asp-controller="User" asp-action="Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Users
-                        </a>         
+                        </a>    
+                        <div class="sb-sidenav-menu-heading">WebSite</div>
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">
+                            <div class="sb-nav-link-icon"></div>
+                            Products
+                        </a>
+                        <a class="nav-link" asp-controller="Brand" asp-action="Index">
+                            <div class="sb-nav-link-icon"></div>
+                            Product Brands
+                        </a>
+                        <a class="nav-link" asp-controller="Order" asp-action="Index">
+                            <div class="sb-nav-link-icon"></div>
+                            Orders
+                        </a>
                     </div>
                 </div>
                 
             </nav>
         </div>
+
         <div id="layoutSidenav_content">
             <div class="container">
                 <main role="main" class="pb-3">
