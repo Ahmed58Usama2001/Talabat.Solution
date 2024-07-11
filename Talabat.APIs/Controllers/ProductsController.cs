@@ -38,6 +38,7 @@ namespace Talabat.APIs.Controllers
 
         // /api/Products
         //[Authorize/*(AuthenticationSchemes = "X")*/]
+        [CachedAttribute(600)] //Action filter
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery]ProductSpeceficationsParams speceficationsParams)
         {
